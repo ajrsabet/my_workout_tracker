@@ -42,7 +42,6 @@ app.get("/stats", function(req, res) {
 app.get("/api/workouts", (req, res) => {
   db.Workout.find({})
     .then(data => {
-      console.log(data);
       res.json(data);
     })
     .catch(err => {
@@ -83,10 +82,6 @@ app.get("/api/workouts/range", (req, res) => {
       res.json(err);
     });
 });
-
-
-
-
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
