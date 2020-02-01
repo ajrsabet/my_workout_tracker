@@ -30,6 +30,9 @@ app.get("/exercise", function(req, res) {
 });
 
 
+app.get("/stats", function(req, res) {
+  res.sendFile(path.join(__dirname, "public/stats.html"));
+});
 
 
 
@@ -71,19 +74,16 @@ app.post("/api/workouts", (req, res) => {
 
 // workouts in range
 app.get("/api/workouts/range", (req, res) => {
-  db.Workout.findAll({})
+  db.Workout.find({})
     .then(data => {
       res.json(data);
-      res.sendFile(path.join(__dirname, "public/stats.html"));
+     
     })
     .catch(err => {
       res.json(err);
     });
 });
 
-app.get("/stats", function(req, res) {
-  res.sendFile(path.join(__dirname, "public/stats.html"));
-});
 
 
 
